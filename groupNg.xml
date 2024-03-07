@@ -1,0 +1,19 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="testsuite">
+	<test name="testname">
+		<groups>
+            <run>
+              <include name = "Regression"></include>
+            </run>
+        </groups>
+        <classes>	
+        	<class name="com.supplycopia.clinical.analytics.ProcedureClinicalModule"/>			
+		</classes>
+	</test>
+	<listeners>	
+		<!-- <listener class-name="com.supplycopia.listeners.AutoTestListener"></listener>
+		<listener class-name="com.supplycopia.listeners.RetryListener"></listener>
+		 -->
+		 <listener class-name="com.supplycopia.report.ExtentReportListener"></listener>
+	</listeners>
+</suite> 

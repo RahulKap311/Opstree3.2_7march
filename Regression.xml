@@ -1,0 +1,58 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="testsuite">
+	<listeners>	
+		
+		 <listener class-name="com.buildpiper.report.ExtentReportListener"></listener>
+	</listeners>
+	
+	<test thread-count="1" name="RegressionSuite">
+	 <classes>
+		 <class name="com.buildpiper.testcases.ServiceCreationTestcases">
+		 <methods>
+         <include name="createServ" />
+         <include name="BuildDeployAlternate" />
+         <include name="EditandDeleteService" />
+         <include name="EditandDeleteServiceEnvironment" />
+        </methods>
+		 </class>
+		 
+		  <class name="com.buildpiper.testcases.ServiceCreationComprehensiveTestCases">
+		 <methods>
+         <include name="serviceOverview_Promote" />
+        </methods>
+		 </class>
+		 
+		  <class name="com.buildpiper.testcases.EnvironmentTestcasesExecution">
+		 <methods>
+         <include name="CreateEnvironment" />
+         <include name="EnvironmentLevelSearch" />
+         <include name="DeleteEnvironment" />
+        </methods>
+		 </class>
+		 
+		  <class name="com.buildpiper.testcases.BuildPiperTestcasesExecution">
+		 <methods>
+		 <include name="CreateBasicPipeLine" />
+         <include name="CreateJiraPipeLine" />
+         <include name="BuildPipeLine" />
+         <include name="managePopupTest" />
+        </methods>
+		 </class>
+		 
+		  <class name="com.buildpiper.testcases.RepoIntegrationTestCases">
+		 <methods>
+         <include name="AddSecretsOnAddRepoPage" />
+        </methods>
+		 </class>
+		 
+		 <class name="com.buildpiper.testcases.JobExecutionActivityTestcases">
+		 <methods>
+         <include name="PaginationCheck" />
+         <include name="ActivityFilterby_Status" />
+        </methods>
+		 </class>
+		 
+		 
+	 </classes>
+	</test>
+</suite> 

@@ -1,0 +1,33 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="testsuite">
+	<listeners>	
+		
+		 <listener class-name="com.buildpiper.report.ExtentReportListener"></listener>
+	</listeners>
+	
+	<test thread-count="1" name="RegressionSuite">
+	 <classes>
+		 <class name="com.buildpiper.testcases.ServiceCreationComprehensiveTestCases">
+		 <methods>
+         <include name="serviceOverview_CreateServiceManifest" />
+         <include name="serviceOverview_CreateDeployManifestService" />
+        </methods>
+		 </class>
+		 <class name="com.buildpiper.testcases.ServiceCreationTestcases">
+		 <methods>
+         <include name="createHPAService" />
+        </methods>
+		 </class>
+		 <class name="com.buildpiper.testcases.EnvironmentTestcasesExecution">
+		 <methods>
+         <include name="CreateEnvironmentwithBPConfigMap" />
+        </methods>
+		 </class>
+		 <class name="com.buildpiper.testcases.BuildPiperTestcasesExecution">
+		 <methods>
+         <include name="createSchedulePipeline" />
+        </methods>
+		 </class>		 
+	 </classes>
+	</test>
+</suite> 

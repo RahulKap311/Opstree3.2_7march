@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+<title>TestNG Report</title>
+<style type="text/css">table {margin-bottom:10px;border-collapse:collapse;empty-cells:show}th,td {border:1px solid #009;padding:.25em .5em}th {vertical-align:bottom}td {vertical-align:top}table a {font-weight:bold}.stripe td {background-color: #E6EBF9}.num {text-align:right}.passedodd td {background-color: #3F3}.passedeven td {background-color: #0A0}.skippedodd td {background-color: #DDD}.skippedeven td {background-color: #CCC}.failedodd td,.attn {background-color: #F33}.failedeven td,.stripe .attn {background-color: #D00}.stacktrace {white-space:pre;font-family:monospace}.totop {font-size:85%;text-align:center;border-bottom:2px solid #000}.invisible {display:none}</style>
+</head>
+<body>
+<table>
+<tr><th>Test</th><th># Passed</th><th># Skipped</th><th># Retried</th><th># Failed</th><th>Time (ms)</th><th>Included Groups</th><th>Excluded Groups</th></tr>
+<tr><th colspan="8">Default suite</th></tr>
+<tr><td><a href="#t0">Default test</a></td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num attn">1</td><td class="num">90,164</td><td></td><td></td></tr>
+</table>
+<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Default suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Default test &#8212; failed</th></tr><tr class="failedeven"><td rowspan="1">com.buildpiper.testcases.ServiceCreationComprehensiveTestCases</td><td><a href="#m0">serviceOverview_CreateServiceManifest</a></td><td rowspan="1">1709534424415</td><td rowspan="1">68194</td></tr></tbody>
+</table>
+<h2>Default test</h2><h3 id="m0">com.buildpiper.testcases.ServiceCreationComprehensiveTestCases#serviceOverview_CreateServiceManifest</h3><table class="result"><tr><th>Messages</th></tr><tr><td><div class="messages">Exception while scroll to view of element: <br/>Exception while scroll to view of element: <br/> Element :Proxy element for: DefaultElementLocator 'By.xpath: //div[@aria-controls='simple-menu']//div//div[2]//p' is not clickable using javaScript<br/> Element :Proxy element for: DefaultElementLocator 'By.xpath: //div[@aria-controls='simple-menu']//div//div[2]//p' is not clickable using selenium click<br/><img src=D:\BuildPiper3.2_Rahul\Reports\04Mar_121002\serviceOverview_CreateServiceManifest_chrome\serviceOverview_CreateServiceManifest_chrome_64_Mar_121055.jpg alt='Lamp' width='500' height='400'><br/>Clicking on element userMenuAppBar<br/><img src=D:\BuildPiper3.2_Rahul\Reports\04Mar_121002\serviceOverview_CreateServiceManifest_chrome\serviceOverview_CreateServiceManifest_chrome_64_Mar_121055.jpg alt='Lamp' width='500' height='400'><br/>Exception while scroll to view of element: <br/>Exception while scroll to view of element: <br/> Element :Proxy element for: DefaultElementLocator 'By.xpath: //p[@class='inactive-portal cursor-pointer']' is not clickable using javaScript<br/> Element :Proxy element for: DefaultElementLocator 'By.xpath: //p[@class='inactive-portal cursor-pointer']' is not clickable using selenium click<br/><img src=D:\BuildPiper3.2_Rahul\Reports\04Mar_121002\serviceOverview_CreateServiceManifest_chrome\serviceOverview_CreateServiceManifest_chrome_64_Mar_121126.jpg alt='Lamp' width='500' height='400'><br/>Clicking on element switching to user account<br/><img src=D:\BuildPiper3.2_Rahul\Reports\04Mar_121002\serviceOverview_CreateServiceManifest_chrome\serviceOverview_CreateServiceManifest_chrome_64_Mar_121127.jpg alt='Lamp' width='500' height='400'><br/>Result upload to testlink is disabled, Please ensure you have 'UpdateTestLink=Yes' in project.properties <br/>####### End of Test Case: serviceOverview_CreateServiceManifest #######</div></td></tr><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0
+	at java.base/jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:100)
+	at java.base/jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:106)
+	at java.base/jdk.internal.util.Preconditions.checkIndex(Preconditions.java:302)
+	at java.base/java.util.Objects.checkIndex(Objects.java:385)
+	at java.base/java.util.ArrayList.get(ArrayList.java:427)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementListHandler.invoke(LocatingElementListHandler.java:39)
+	at jdk.proxy2/jdk.proxy2.$Proxy27.get(Unknown Source)
+	at com.buildpiper.pages.ServiceCreationPage.buildAndValidateService(ServiceCreationPage.java:300)
+	at com.buildpiper.testcases.ServiceCreationComprehensiveTestCases.serviceOverview_CreateServiceManifest(ServiceCreationComprehensiveTestCases.java:415)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:134)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:597)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:816)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:766)
+	at org.testng.TestRunner.run(TestRunner.java:587)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:384)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:378)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:337)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:286)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1187)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1109)
+	at org.testng.TestNG.runSuites(TestNG.java:1039)
+	at org.testng.TestNG.run(TestNG.java:1007)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+</body>
+</html>

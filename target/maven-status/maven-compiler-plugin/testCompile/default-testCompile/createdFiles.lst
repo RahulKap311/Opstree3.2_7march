@@ -1,0 +1,4 @@
+com\buildpiper\testcases\EnvironmentTestcasesExecution.class
+com\buildpiper\testcases\BuildPiperTestcasesExecution.class
+com\buildpiper\testcases\HomePageTest.class
+com\buildpiper\testcases\ServiceCreationTestcases.class

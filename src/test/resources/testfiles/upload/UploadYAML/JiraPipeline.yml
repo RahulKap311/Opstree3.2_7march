@@ -1,0 +1,379 @@
+stages:
+  - name: Jira Ticket Create
+    approval: false
+    approve_user: []
+    stage_run_condition: {}
+    questionnaires: []
+    jobs:
+      - name: job_1
+        type: JIRA
+        task_run_condition: null
+        on_success_exit: false
+        on_failure_exit: true
+        mark_success_upon_skip: false
+        latest_enable: null
+        skip_task: false
+        project_job_template_id: 1
+        tag: null
+        operation: create
+        issue_key: stage.Jira Ticket Create.job.job_1.jira_id.key
+        summary: Initiating production release for services
+        description: null
+        issuetype: task
+        priority: medium
+        account_id: null
+        issue_name: null
+        epic_name: null
+        additional_field_key_value: {}
+  - name: Jira Approval Question
+    approval: true
+    approve_user:
+      - id: 1
+        name: Super Admin
+        email: opstree@opstree.com
+        role_master: Project Admin
+        role_master_id: 1
+      - id: 2
+        name: Perfeasy
+        email: perfeasy@opstree.com
+        role_master: Project Admin
+        role_master_id: 1
+      - id: 3
+        name: Sandeep Rawat
+        email: sandeep@opstree.com
+        role_master: Project Admin
+        role_master_id: 1
+    stage_run_condition: {}
+    questionnaires:
+      - id: 27
+        created_at: 2023-06-01T14:46:23.445653+05:30
+        updated_at: 2023-06-01T14:47:21.984346+05:30
+        question: Local testing done ?
+        type: select
+        possible_value: yes,no
+        default_value: null
+        jira_update: true
+        job_template: null
+        mandatory: false
+        jira_reference: stage.Jira Ticket Create.job.job_1.jira_id.key
+        field_name: Local testing done
+        field_type: option
+        is_pipeline_context_field: false
+      - id: 28
+        created_at: 2023-06-01T14:46:23.446491+05:30
+        updated_at: 2023-06-01T14:47:21.986240+05:30
+        question: Is Backward compatibility script reviewed ?
+        type: select
+        possible_value: yes,no
+        default_value: null
+        jira_update: true
+        job_template: null
+        mandatory: false
+        jira_reference: stage.Jira Ticket Create.job.job_1.jira_id.key
+        field_name: Is Backward compatibility script reviewed
+        field_type: option
+        is_pipeline_context_field: false
+    jobs:
+      - name: job_1
+        type: JIRA
+        task_run_condition: null
+        on_success_exit: false
+        on_failure_exit: true
+        mark_success_upon_skip: false
+        latest_enable: null
+        skip_task: false
+        project_job_template_id: 1
+        tag: null
+        operation: add_comment
+        issue_key: stage.Jira Ticket Create.job.job_1.jira_id.key
+        comment: approved
+        issuetype: null
+  - name: Dev Build & Deploy
+    approval: false
+    approve_user: []
+    stage_run_condition: {}
+    questionnaires: []
+    jobs:
+      - name: job_1
+        type: BUILD
+        task_run_condition: null
+        on_success_exit: false
+        on_failure_exit: true
+        mark_success_upon_skip: false
+        latest_enable: false
+        skip_task: false
+        project_job_template_id: ""
+        services:
+          - ot-spring3
+          - ot-ui
+        env:
+          - dev-2
+        tag: latest
+      - name: job_2
+        type: DEPLOY
+        task_run_condition: null
+        on_success_exit: false
+        on_failure_exit: true
+        mark_success_upon_skip: false
+        latest_enable: null
+        skip_task: false
+        project_job_template_id: 1
+        services:
+          - ot-spring3
+          - ot-ui
+        env:
+          - dev-2
+        deployment_type: ROLLING_UPDATE
+        deployment_status_check: false
+        artifact_source: generated
+  - name: Dev Lead Sign Off
+    approval: true
+    approve_user:
+      - id: 1
+        name: Super Admin
+        email: opstree@opstree.com
+        role_master: Project Admin
+        role_master_id: 1
+      - id: 2
+        name: Perfeasy
+        email: perfeasy@opstree.com
+        role_master: Project Admin
+        role_master_id: 1
+      - id: 3
+        name: Sandeep Rawat
+        email: sandeep@opstree.com
+        role_master: Project Admin
+        role_master_id: 1
+    stage_run_condition: {}
+    questionnaires: []
+    jobs:
+      - name: job_1
+        type: JIRA
+        task_run_condition: null
+        on_success_exit: false
+        on_failure_exit: true
+        mark_success_upon_skip: false
+        latest_enable: null
+        skip_task: false
+        project_job_template_id: 1
+        tag: null
+        operation: add_comment
+        issue_key: stage.Jira Ticket Create.job.job_1.jira_id.key
+        comment: dev lead sign off received
+        issuetype: null
+      - name: job_2
+        type: JIRA
+        task_run_condition: null
+        on_success_exit: false
+        on_failure_exit: true
+        mark_success_upon_skip: false
+        latest_enable: null
+        skip_task: false
+        project_job_template_id: 1
+        tag: null
+        operation: status_update
+        issue_key: stage.Jira Ticket Create.job.job_1.jira_id.key
+        status: Dev Signoff
+        issuetype: null
+        additional_field_key_value: {}
+  - name: QA Build & Deploy
+    approval: false
+    approve_user: []
+    stage_run_condition: {}
+    questionnaires: []
+    jobs:
+      - name: job_1
+        type: PROMOTE
+        task_run_condition: null
+        on_success_exit: false
+        on_failure_exit: true
+        mark_success_upon_skip: false
+        latest_enable: null
+        skip_task: false
+        project_job_template_id: ""
+        services:
+          - ot-spring3
+          - ot-ui
+        env:
+          - dev-2
+        target_env:
+          - qa
+        artifact_source: generated
+      - name: job_2
+        type: DEPLOY
+        task_run_condition: null
+        on_success_exit: false
+        on_failure_exit: true
+        mark_success_upon_skip: false
+        latest_enable: null
+        skip_task: false
+        project_job_template_id: 1
+        services:
+          - ot-spring3
+          - ot-ui
+        env:
+          - qa
+        deployment_type: ROLLING_UPDATE
+        deployment_status_check: false
+        artifact_source: generated
+  - name: QA Lead Sign Off
+    approval: true
+    approve_user:
+      - id: 1
+        name: Super Admin
+        email: opstree@opstree.com
+        role_master: Project Admin
+        role_master_id: 1
+      - id: 2
+        name: Perfeasy
+        email: perfeasy@opstree.com
+        role_master: Project Admin
+        role_master_id: 1
+      - id: 3
+        name: Sandeep Rawat
+        email: sandeep@opstree.com
+        role_master: Project Admin
+        role_master_id: 1
+    stage_run_condition: {}
+    questionnaires: []
+    jobs:
+      - name: job_1
+        type: JIRA
+        task_run_condition: null
+        on_success_exit: false
+        on_failure_exit: true
+        mark_success_upon_skip: false
+        latest_enable: null
+        skip_task: false
+        project_job_template_id: 1
+        tag: null
+        operation: add_comment
+        issue_key: stage.Jira Ticket Create.job.job_1.jira_id.key
+        comment: QA lead sign off received
+        issuetype: null
+      - name: job_2
+        type: JIRA
+        task_run_condition: null
+        on_success_exit: false
+        on_failure_exit: true
+        mark_success_upon_skip: false
+        latest_enable: null
+        skip_task: false
+        project_job_template_id: 1
+        tag: null
+        operation: status_update
+        issue_key: stage.Jira Ticket Create.job.job_1.jira_id.key
+        status: QA Signoff
+        issuetype: null
+        additional_field_key_value: {}
+  - name: Business Lead Sign Off
+    approval: true
+    approve_user:
+      - id: 1
+        name: Super Admin
+        email: opstree@opstree.com
+        role_master: Project Admin
+        role_master_id: 1
+      - id: 2
+        name: Perfeasy
+        email: perfeasy@opstree.com
+        role_master: Project Admin
+        role_master_id: 1
+      - id: 3
+        name: Sandeep Rawat
+        email: sandeep@opstree.com
+        role_master: Project Admin
+        role_master_id: 1
+    stage_run_condition: {}
+    questionnaires: []
+    jobs:
+      - name: job_1
+        type: JIRA
+        task_run_condition: null
+        on_success_exit: false
+        on_failure_exit: true
+        mark_success_upon_skip: false
+        latest_enable: null
+        skip_task: false
+        project_job_template_id: 1
+        tag: null
+        operation: add_comment
+        issue_key: stage.Jira Ticket Create.job.job_1.jira_id.key
+        comment: Business lead sign off received
+        issuetype: null
+      - name: job_2
+        type: JIRA
+        task_run_condition: null
+        on_success_exit: false
+        on_failure_exit: true
+        mark_success_upon_skip: false
+        latest_enable: null
+        skip_task: false
+        project_job_template_id: 1
+        tag: null
+        operation: status_update
+        issue_key: stage.Jira Ticket Create.job.job_1.jira_id.key
+        status: Uat Signoff
+        issuetype: null
+        additional_field_key_value: {}
+  - name: Prod Promte & Deploy
+    approval: false
+    approve_user: []
+    stage_run_condition: {}
+    questionnaires: []
+    jobs:
+      - name: job_1
+        type: PROMOTE
+        task_run_condition: null
+        on_success_exit: false
+        on_failure_exit: true
+        mark_success_upon_skip: false
+        latest_enable: null
+        skip_task: false
+        project_job_template_id: ""
+        services:
+          - ot-spring3
+          - ot-ui
+        env:
+          - qa
+        target_env:
+          - prod
+        artifact_source: generated
+      - name: job_2
+        type: DEPLOY
+        task_run_condition: null
+        on_success_exit: false
+        on_failure_exit: true
+        mark_success_upon_skip: false
+        latest_enable: null
+        skip_task: false
+        project_job_template_id: 1
+        services:
+          - ot-spring3
+          - ot-ui
+        env:
+          - prod
+        deployment_type: ROLLING_UPDATE
+        deployment_status_check: false
+        artifact_source: generated
+  - name: Update Jira Ticket
+    approval: false
+    approve_user: []
+    stage_run_condition: {}
+    questionnaires: []
+    jobs:
+      - name: job_1
+        type: JIRA
+        task_run_condition: null
+        on_success_exit: false
+        on_failure_exit: true
+        mark_success_upon_skip: false
+        latest_enable: null
+        skip_task: false
+        project_job_template_id: 1
+        tag: null
+        operation: status_update
+        issue_key: stage.Jira Ticket Create.job.job_1.jira_id.key
+        status: Deployment Done
+        issuetype: null
+        additional_field_key_value: {}

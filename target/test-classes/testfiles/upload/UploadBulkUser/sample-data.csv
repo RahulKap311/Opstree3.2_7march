@@ -1,0 +1,2 @@
+Name,Email,Policies,User Group,Provider,Active,SuperUser
+Test User,example@example.com,UAT-Policy|Prod-Policy,Devops-perfeasy-testing|Dev-perfeasy-testing,BUILDPIPER,1,0

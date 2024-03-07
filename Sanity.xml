@@ -1,0 +1,20 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="testsuite">
+	<test name="testname">
+		<groups>
+            <run>
+              <include name = "Sanity"></include>
+            </run>
+        </groups>
+        <packages>
+	<package name="com.supplycopia.cms.bulkupload"/>
+	<package name="com.supplycopia.managecontracts"/>	
+	</packages>
+	</test>
+	<listeners>	
+		<!-- <listener class-name="com.supplycopia.listeners.AutoTestListener"></listener>
+		<listener class-name="com.supplycopia.listeners.RetryListener"></listener>
+		 -->
+		 <listener class-name="com.supplycopia.report.ExtentReportListener"></listener>
+	</listeners>
+</suite> 
